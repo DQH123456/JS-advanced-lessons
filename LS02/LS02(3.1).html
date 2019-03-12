@@ -1,0 +1,97 @@
+<html>
+<title>LS02(3.1)</title>
+<body>
+    <script>
+        //原始类型
+        var str_a = "a";
+        //引用类型
+        var obj_a = {v:"a"};
+        //原始类型与引用类型的判等不同
+        var a1 = 100;
+        var b1 = 100;
+        console.log(a1 == b1);
+        console.log(a1 === b1);
+
+
+        //原始类型与引用类型的函数参数传递方式不同
+        var str_a = "Hello World";
+        function fn_a(arg){
+            console.log(arg);
+            arg = "Hai";
+            console.log(str_a,arg);
+        };
+        fn_a(str_a);
+        console.log(str_a);
+        // 引用传递
+        var obj_a = {value:1};
+        function fn_a(arg){
+            arg.value=3;
+        };
+        fn_a(obj_a);
+        console.log(obj_a);
+
+
+        //Number
+        var a1 = 20;
+        var a2 = 23.4;
+        console.log(parseInt(a2));
+        console.log(parseFloat("23.456xy"));
+
+
+        //String
+        //字面量
+        var str = "abc_def_ghi_jkl_mn";
+
+        //转义字符 \n \" \' \\
+        console.log("abc\ndefghi\\\n\'mn\'");
+
+        //字符串常用操作
+        var str = "abc_def_ghi_jkl_mn";     
+
+        //Null,Underfined
+        function foo(x,y) {
+            console.log(x,y);//1 undefined
+        }
+        foo(1);
+
+
+        //对象类型
+        var obj = {x:1,y:2};
+        console.log(obj.__proto__ === Object.prototype);
+        console.log(Object.prototype);
+
+
+        //临时对象在使用之后立即释放
+        var str="test";
+        str.p = 4;//设置临时对象属性
+        var t = str.p; // 临时对象已释放，再输出t时为undefined
+    
+    
+        //数据转换
+        console.log(Boolean("abc"));
+        console.log(Number(true));
+        console.log(Number(false));
+        console.log(String(undefined));
+        console.log(String(null));
+
+
+        
+        //比较运算符 与 隐式类型转换
+        var a = 3;
+        var b = 4;
+        console.log(typeof (a>b),a>b);
+        console.log(typeof (a==b),a==b);
+        console.log(typeof (a<b),a<b);
+
+
+        
+        // 流程语句 与 隐式类型转换
+        var h = {x:1};
+        //var h = "";
+        if(h){
+            console.log("h:",h);
+        }
+
+    </script>
+</body>
+</html>

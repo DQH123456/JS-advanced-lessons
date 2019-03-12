@@ -1,0 +1,79 @@
+<html>
+<title>LS04</title>
+<body>
+    <script>
+        //字面量
+        var obj = {x:1,y:2};
+        var arr = [1,2,3,4,5];
+
+        //表达式与语句 表达式语句
+        var o = {x:1,y:2};
+        a>b;
+
+        23;//其中的23为原始表达式
+        obj = {x:2};// ={x:2}为对象初始化表达式
+        arr = [1,2];// =[1,2]为数组初始化表达式
+        var foo = function(){ // = function(){}为函数定义表达式
+            console.log("foo");
+        };
+        obj.x;//obj.x为属性访问表达式
+        foo();//foo()为函数调用表达式
+        2+3;//2+3为算数运算表达式
+        2>3;//2>3为关系运算表达式
+        1&&2;//1&&2为逻辑运算表达式
+
+    
+        //ES5 中没有块作用域
+
+        function sloppyFunc(){
+            //'use strict'
+            sloppyvar = 123;
+        }
+        sloppyFunc();
+        console.log(sloppyVar);
+
+        function thisTest(){
+            //'use strict'
+            console.log(this);
+        }
+        thisTest;
+
+        //判断是否为严格模式
+        //'use strict'
+        function isStrictMode(){
+            return this===undefined?true:false;
+        }
+        isStrictMode();
+
+        //严格模式下禁止删除不可改变的属性和未定义的变量
+        //严格模式下禁止函数参数重名
+
+
+        var i = 1;
+        switch(i){
+            case 1:
+                console.log("case 1");
+                break;
+            case 2:
+                console.log("case 2");
+                break;
+            case 3:
+                console.log("case 3");
+                break;
+            case 4:
+                console.log("case 4");
+                break;
+            default:
+                console.log("default");
+        }
+
+
+        //for ... in 遍历数组
+        var arr = [2,,"33"];
+        for(var i in arr){
+            console.log(i,arr[i]);
+        }
+
+        
+    </script>
+</body>

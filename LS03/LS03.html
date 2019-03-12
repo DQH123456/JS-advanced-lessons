@@ -1,0 +1,59 @@
+<html>
+<title>LS03</title>
+<body>
+    <script>
+        (345.67).toFixed(1);
+        //Number原型方法
+        // Number.prototype.toFixed();
+        // Number.prototype.toPrecision();
+        // Number.prototype.toString();
+        // Number.prototype.toExponential();
+
+        "abcde".charAt(2);
+        console.log("A" > "a");
+        //字符串提取
+        //String.prototype.charAt(pos);
+        //String.prototype.charCodeAt(pos);
+        //String.prototype.slice(start,end?);
+        //String.prototype.substr(start,length?)
+        //String.prototype.substring(start,end?);
+        //String.prototype.split(separator?,limit?);
+
+        var str2 = "abcdef".slice(2);
+        var str3 = "abcdef".slice(2,5);
+        var str4 = "abcdef".slice(-2);
+        var str5 = "abcdef".slice(2,-2);
+
+        var arr6 = "abcdef".split("c");
+        var arr7 = "abcdef".split("c",1);
+        var arr8 = "abcdef".split("c",2);
+
+        var str9 = "abcdef".charAt(2);
+        var str10 = "abcdef".charCodeAt(3);
+        var str11 = "abcdefabcdef".indexOf("d",1);
+        var str12 = "abcdefabcdef".indexOf("d",4);
+
+
+        //Part 333333333 检索和比较
+        //String.prototype.indexOf(searchingString,position?);
+        //String.prototype.lastIndexOf(searchingString,position?);
+        //String.prototype.localeCompare(other);
+        var indexOf = "abcDEFabcDEFabcDEF".indexOf("D",6);
+
+
+        //Part 222222222 字符串变换
+        //String.prototype.trim( );
+        //String.prototype.concat(str1?,str2?);
+        //String.prototype.toLowerCase( );
+        //String.prototype.toLocaleLowerCase( );
+        //String.prototype.toUpperCase( );
+        //String.prototype.toLocaleUpperCase( );
+        var str16 = "aaa".concat("bbb");
+
+        //String.prototype.search(regexp);
+        //String.prototype.match(regexp);
+        //String.prototype.replace(regexp);
+
+    </script>
+</body>
+</html>
