@@ -1,0 +1,175 @@
+<html>
+<body>
+    <script>
+        console.log("小明回家");
+        var XX =["书桌", "书包", "铅笔盒"];//小明家中
+        console.log("在家-做作业中 ");function goToStore(){
+            console.log("在文具店-买文具中");
+        console.log("在文具店-买文具中发现没带钱");
+        goToBank();
+        console.log("在文具店-买好文具返回家");
+        }
+        function goToBank(){
+            var zZ =["银行职员", "柜员机"];//银行中
+            console.log("在银行-取钱返回文具店");
+        }
+            console.log("在家-做作业中 发现笔没油了");
+            goToStore();//笔没油了，去商店买笔
+            console.log("在家-继续做作业");
+
+
+
+        console.log("全局上下文——start");
+        var x = 1;
+        function foo(){
+            console.log("foo上下文——start");
+            var y = 2;
+            function bar(){
+                console.log("bar上下文");
+                var z = 3;z = 3;
+                console.log(x+y+z);
+                console.log("bar上下文");
+            }
+        }
+
+
+    var spanList = document.getElementsByTagName("span");
+    var show = document.getElementsByClassName("show")[0];
+    for(var i = 0;i<spanList.length;i++){
+        (function(j){
+            spanList[j].onclick = function(){
+                show.innerHTML = "导航"+j+"内容";
+            }
+        })(i)
+    }
+    
+    
+    </script>
+
+
+
+    <script>
+        var div1 = docunemt.getElementById("div1");
+        var username = 'zhangsan';
+        div1.onclick = function(){
+            this.innerHTML = username;
+        }
+
+
+
+        (function(w,d){
+            w.onlvpid = function(){
+
+            }
+        })(window,document)
+
+
+        //立即执行
+
+        //(function 函数名(参数){
+            //函数体
+        //}f(实参))
+        //实参可以在里面也可以在外面
+
+         
+        (function max(x,y){
+            return x>y?x:y;
+        }(2,3))
+
+
+        (function min(a,b){
+            return a>b?b:a;
+        })(2,3);
+    
+
+
+        var iserId = 12;
+        document.onclick = function(){
+            console.log("userId = ",userId);
+        };
+
+        //一长串代码后，忘记了上面定义的userId
+        var a = 2,b = 3;
+        if (a<b){
+            var userId = 34;//重复定义，变量污染
+        }
+
+
+        function f(){
+            var gerNumFuncs = [];//函数数组
+            for(var i = 0;i<10;i++){
+                (function(j){
+                    gerNumFuncs[j] = function(){return j;}
+                })(i);
+            }
+            return getNumFuncs;
+        }
+        var tmp = f();
+        tmp[3]();//输出为3，tmp[0]()...tmp[9]()都是为期望的结果
+
+
+
+
+
+        function foo(){
+            var arr1 = [];
+            for(var i = 0;i<10;i++){
+                arr1[i] = function(){
+                    return i ;
+                }           //()
+                //有括号(10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                //无括号(10) [ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ]
+            }
+            return arr1;
+        }
+        var arr2 = foo();
+        console.log(arr2);
+        arr2[0]();
+    
+    </script>
+
+
+
+
+<script>
+    function fn(){
+        var arr1 = [];
+        for(var i = 0;i<10;i++){
+            arr1[i] = function(){
+                return 1;
+            }
+        }
+
+    function fn(){
+        var arr1 = [];
+        for(var i = 0;i<10;i++){
+            (function(){
+                arr1[i] = function(){
+                    return i;
+                }
+            })
+    }return arr1;
+
+
+            //等效于
+
+        // arr1[0] = function(){
+        //     return i; 
+
+        // }
+        // arr1[i] = function(){
+        //     return i;
+        // }
+
+
+
+        return arr1;
+    }
+    fn();
+
+
+</script>
+
+
+</body>
+</html>

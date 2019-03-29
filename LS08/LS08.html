@@ -1,0 +1,136 @@
+<html>
+<html>LS08</html>
+<body>
+
+</body>
+<script>
+function foo(){}
+console.log(foo); //
+console.log(typeof foo); //
+console.log(foo instanceof Object); //
+console.log(foo instanceof Function); //
+console.log(foo === window.foo); //
+
+
+console.log(typeof Function);//function
+console.log(typeof Array);	 //function
+console.log(typeof Date);	 //function
+console.log(typeof Error); 	 //function
+console.log(typeof Math);	 //object
+console.log(typeof JSON);	 //object
+
+
+//函数对象属性之arguments 实参集合（类似数组的一个对象）
+var foo = function (a,b){
+    console.log(arguments);//类似数组的一个对象
+    //arguments 是Symbol类型，独一无二的，具体参见后续ES6部分
+    console.log(arguments === test.arguments);
+
+    console.log(arguments.length);
+    var args = Array.prototype.splice.call(arguments,0);
+    console.log(args);
+};
+foo(1,2,3,4);
+
+
+//函数对象属性之length 形参个数
+function checkVarCount(a, b) {
+    if (checkVarCount.length !== arguments.length) {
+        alert("The count of the parameters you passed into the function doesn't match the function definition.");
+    }else{
+        alert("Successfully call the function");
+    }
+
+
+    //函数对象方法之 call 调用一个普通函数或对象的方法时，用另一个对象替换当前对象
+//call([thisObj[, arg1[, arg2[, [, argN]]]]])
+//它允许您将函数的 this 对象从初始上下文变为由 thisObj 指定的新对象。
+// 如果没有提供 thisObj 参数，则 global 对象被用作 thisObj。
+// 与apply方法不同的地方是，apply的第二个参数类型必须是Array，
+// 而call方法是将所有的参数列举出来，用逗号分隔
+function swim(m,n){
+    console.log("i'm:"+this.name+" i can swim ___",m,n);
+}
+var bird = {
+    name:"polly",
+    fly:function(m,n){
+        console.log("i'm:"+this.name+" i can fly ___",m,n);
+    }
+};
+
+var me = {
+    name:"ABC"
+};
+swim(1,2);
+swim.call(me,3,4);
+bird.fly(5,6);
+bird.fly.call(me,7,8);
+bird.fly.apply(me,[7,8]);
+swim.call(null,1,2);
+
+
+//函数对象方法之 apply
+//functionName.apply([thisObj[,argArray]])
+//与call方法不同的地方是，apply的第二个参数类型必须是Array
+swim.apply(me,[9,10]);
+bird.fly.apply(me,[11,12]);
+swim.apply(null,[13,14]);
+
+
+
+//关于绑定 例一
+//下述代码输出结果为（     ）
+var x = 45;
+var obj = {
+    x:23,
+    test:function(){
+		function foo(){
+			console.log(this.x);
+		}
+		foo.bind(this)();//var fee = foo.bind(this); fee();
+		foo();
+    }
+};
+obj.test();
+
+
+
+// 实例一 高阶函数一般应用 01
+function add(x, y, f) {
+    return f(x) + f(y);
+}
+add(2,3,function(z){return z*z;});
+add(2,-3,Math.abs);//
+add(2,3,Math.sqrt);//2的开平方加3的开平方
+
+
+
+//函数作为返回值输出
+var x=12;
+var obj = {
+    x:34,
+    fun2:function(){
+        console.log(this.x,this);
+    }
+};
+var fun1 = function () {
+    return function fun2() {
+        return this.x;//若改为 return this;
+    }
+};
+obj.fun3 = fun1;
+obj.fun4 = fun1();
+console.log("输出：",obj.fun3());
+console.log("输出：",obj.fun3()());
+console.log("输出：",obj.fun4());
+
+
+//输出： ƒ fun2() {
+//         return this.x;//若改为 return this;
+//     }
+//输出： 12
+//输出： 34
+
+}
+</script>
+</html>

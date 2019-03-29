@@ -1,0 +1,119 @@
+<html>
+<title>LS10</title>
+    <script>//函数会形成局部作用域
+    var a = 1;  //全局变量
+    function fn1(){
+        console.log(a);         //1
+        var b = 2;
+        var c = 3;
+        function fn2(){     
+            var c = 30;         //去掉var，输出为1,30,30
+            var d = 4;          //去掉var，输出为1,30,3,4
+            console.log(c);         //30
+        }
+        fn2();
+        console.log(c);         //3
+        console.log(d);         //报错
+    }
+    fn1();
+    //fn2();      //加上fn2()报错
+            // var用来定义变量
+            //函数作用范围仅在{}里
+
+
+//函数和变量在完成定义之后，作用域就都是确定的，和调用形式没有关系
+    var username = "jack";
+    function foo(){         //将全局变量改为bill
+        username = "bill"
+        console.log(username);//bill
+    }
+    function bar(){         //定义局部变量mike
+        var username = "mike";
+        foo();
+        console.log(username);//mike
+    }
+    bar();      //bill      mikey
+    
+    
+    
+    
+    </script>
+    <script>
+    //通过new Function创建的函数对象不一定遵从静态词法作用域
+    var scope = "global";
+    function checkScope(){
+        var scope = "local";
+        return function(){
+            return scope;
+        };
+    }
+    console.log(checkScope()())
+
+
+    var scope = "global";
+    function checkScope(){
+        var scope = "local";
+        return new Function("return scope;");
+    }
+    console.log(checkScope()());
+    
+    
+    
+    </script>
+    <script>
+    //ES5没有块作用域
+    //只有函数有局部作用域
+    if (true){
+        var a = 2;
+    }
+    console.log(a);
+    function fn1(){
+
+    }
+
+
+
+    //ES6
+    if(true){
+        let b = 3;
+    }
+    console.log(b);
+    </script>
+
+
+    <script>//作用域特点
+    
+    </script>
+
+
+
+<script>
+        var userId = 5;
+    document.onclick = function(){
+        console.log(userId);
+        userId = 10;
+    }
+    /**/
+    (function(){
+        if (true){
+        var userId = 30;
+        }
+    })()
+    </script>
+    <script>
+        //上下文，当某行代码执行过程中，它的上下文环境，
+        //当前作用域包含的变量，函数调用栈，this指向
+        var x = 5;
+        var y = 6;
+        function foo(){
+            var a = 1;
+            var b = 2;
+            function bar(){
+                var c = 3;
+                var d = 4;
+            }
+            bar();
+        }
+        foo();
+    </script>
+</html>
