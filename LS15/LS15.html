@@ -1,0 +1,190 @@
+<html>
+<title>ch15</title>
+<body>
+
+</body>
+<script>
+//js是基于对象的继承方式
+    var obj = {
+        num:1,
+        str:"hi",
+        sayHi:function(){
+        console.log(this.str);
+        }
+    };
+
+    var newObj = Object.create(obj);
+    console.log(newObj.__proto__ ==obj);
+    console.log(newObj.num);
+    newObj.sayHi();
+
+    /*
+        obj.__proto__ == Object.prototype;
+        Object.prototype.__proto__==null;
+    */
+    console.log(obj.__proto__.__proto__);
+    var obj1 = {x:1};
+    var obj2 = Object.create(obj1);
+    console.log(obj2.__proto__.__proto__.__proto__);
+</script>
+
+
+
+
+
+
+
+<script>
+    var obj1 = {z:1};
+    var obj2 = Object.create(obj1);
+
+    console.log(obj1.__proto__ == Object.prototype);
+    console.log(obj2.__proto__);    //obj1
+    console.log(obj2.__proto__.__proto__);
+    console.log(obj2.__proto__.__proto__.__proto__);
+
+
+    var proObj = {
+        z:3
+    };
+    var obj = Object.create(proObj);
+    obj.x = 1;
+    obj.y = 2;
+
+    console.log(obj.x);
+    console.log(obj.y);
+    console.log(obj.z);
+
+    "z" in obj;
+    obj.hasOwnProperty
+
+    obj.z = 5;
+    obj.hasOwnProperty('z');
+    obj.z;
+    proObj.z;
+
+    obj.z = 8;
+    obj.z;
+
+    delete obj.z;
+    obj.z;
+
+    delete obj.z;
+    obj.z;
+
+
+
+    function Person(username,age){
+        this.username = username;
+        this.age = age;
+    }
+    Person.prototype.sayHi = function(){
+        console.log(this.username);
+    }
+    var person1 = new Person("zhangsan",20);
+    var person2 = new Person("lisi",30);
+    console.log(person1.__proto__ = person.__proto__);
+    console.log(person.__proto__ = Person.prototype);
+    //person1和person2公用sayHi方法，节省内存空间
+    person1.sayHi;
+    person2.sayHi;
+
+
+
+    
+    /*
+    Person.prototype ==Person.__proto__;
+    Person.prototype,constructor == Person;
+    Person.prototype.__proto__ == Object.prototype;
+    Object.prototype.constructor == Object;
+    Object.prototype.__proto__ == null;
+    */
+</script>
+
+<script>
+    //定义一个车（car）的对象，height，width，weight
+
+    //创建一个小轿车的对象，继承车相关的属性，自己具有
+    //color seatNum
+    //create方法，以及构造函数的形式
+
+    var char = {
+        height:150,
+        width:200,
+        weight:2000
+    };
+    var smallCar = Object.create(car);
+    smallCar.color = "red";
+    smallCar.smallCar = 4;
+    console.log(smallCar.height);
+    console.log(smallCar.width);
+
+
+    function createsmallCar(color,seatNum){
+        this.color = color;
+        this.seatNum = seatNum;
+    }
+
+    createsmallCar.prototype = car;
+
+    var smallCar = new createsmallCar("red,4")
+    // function (height,width,weight){
+    //         this.height = height;
+    //         this.width = width;
+
+    
+
+
+
+
+
+
+    <script>
+        for(var i = 0; i<3;i++){
+            //给元素绑定事件，回调函数
+            //延迟执行，定时执行
+        }
+
+        (function(j){
+
+        })(i)
+    
+
+    //闭包，JS存在的代码运行机制
+    //外层函数f1，内层函数f2
+    function fn1(){
+        var x = 0;
+        function fn2(){
+            return ++x;
+        }
+        return fn2;
+    }
+    var result = fn1();
+    result();
+    result();
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

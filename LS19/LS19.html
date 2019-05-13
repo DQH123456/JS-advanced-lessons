@@ -1,0 +1,38 @@
+<html>
+<title>ch19</title>
+<script>
+    var date1 = new Date();
+    var year = date1.getFullYear();
+    var month = date1.getMouth();
+
+    var date2 = new Date(year,month);
+    console.log(date2);
+
+
+    //指明时间日期的字符串，字符串形式很多样化
+    var date3 = new Date("2019年5月5日08:37:09");
+    console.log(date3);
+
+    //指明一个毫秒为单位的数字类型
+    var date4  = new Date(Date.now());
+    console.log(date4);
+</script>
+
+
+<script>
+/*
+    本地时间：当前所处时区的标准时间
+
+*/
+
+var seconds = Date.parse("");
+console.log(seconds);
+var date1 = new Date(seconds);
+console.log(date1);
+
+var date2 = new Date();
+var seconds2 = Date.parse(date2);
+console.log(seconds2 > seconds);
+
+</script>
+</html>

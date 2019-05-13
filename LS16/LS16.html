@@ -1,0 +1,123 @@
+<html>
+
+
+<script>
+    //1、非严格模式下，this指向window对象
+    //2、严格模式下，this是underfined
+    //3、this是谁，取决于函数调用的主体
+    var x = 10;
+    console.log(window.x);
+    function thisText(){
+        console.log(this);
+        console.log(this === window);
+    }
+    thisText();
+
+    function thisText1(){
+        'use strict'
+        console.log(this);
+        return this===undefined?true:false;
+    }
+    thisText1();
+
+</script>
+
+
+<script>
+    var point = {
+        x:0,
+        y:0,
+        moveTo :function(x,y){
+            this.x = x;
+            this.y = y;
+        }
+    }
+    /*1、直接定义在对象下的方法，调用主体就是当前对象
+    2、前提没有函数嵌套
+</script>
+
+
+<script>
+    function Point(x,y){
+        this.x = x;
+        this.y = y;
+        this.moveTo = function(x,y){
+            this.x = x;
+            this.y = y;
+        }
+    }
+    var p = new Point(10,10);
+    //1、this指向函数调用的主题
+
+
+</script>
+<script>
+    var objA = {name:"AA",x:1};
+    var objB = {name:"BB",x:2};
+    function text(){
+        console.log(this.name);
+        console.log(this.x);
+    }
+    objA.fun = text;
+    objA.fun();
+    /*
+    方法A。call（对象）；
+    切换方法A的调用主体，this指向函数的调用主体
+    call（要切换的调用对象，arg1，arg2，arg3）；
+
+    方法B.apply(要切换的调用对象，[arg1,arg2,arg3])
+    */
+    objA.fun.call(objB);
+</script>
+
+
+<script>
+    var point = {
+
+    x:0,
+    y:0,
+    moveTo:function(x,y){
+        function moveTo(x) {
+            console.log(this);
+            this.x=x;
+        }
+        function moveTo(y) {
+            console.log(this);
+            this.y=y;
+        }
+        moveTo(x);
+        moveTo(y);
+    }           //切换moveto函数的调用主体，并且执行moveTox
+    }
+    /*对象内部的函数，存在嵌套关系，内部函数的this指向Windows对象*/
+    point.moveTo(10,10);
+    console.log(point);
+</script>
+
+
+<script>
+var point = {
+
+x:0,
+y:0,
+moveTo:function(x,y){
+    var that = this;
+    function moveToX(x) {
+        this.x=x;
+    }
+    function moveToY(y) {
+        this.y=y;
+    }
+    //切换moveto函数的调用主体，并且执行moveTox
+moveToX(x);
+moveToY(y);
+}
+}
+</script>
+
+
+<script>
+    moveTo:function
+    
+</script>
+</html>

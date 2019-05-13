@@ -1,0 +1,142 @@
+<html>
+<title>ch17</title>
+
+<script>
+    function Person(name){
+        this.name = name;
+    }
+    Person.prototype.age = 20;
+    Person.prototype.showName = function(){
+        console.log(this,name);
+    }
+    function Student (id){
+        this.id = id;
+    }
+    /*
+        person name 属性 MIke,person.__proto__.age
+        person.__proto__.showName
+    */
+    Student.prototype = new Person("Mike")
+    var s1 = new Student(2017001);
+    var s2 = new Student(2017002);
+    console.log(s1.id,s2.id);
+    /*
+        s1自身上面没有age,s1.__proto__==Student.prototype
+        Student.prototype = person;person对象上没有age属性
+        s1.__prot__..__proto__==person.__proto__;
+        person.__proto__ == Person.prototype
+    */
+
+
+
+    /*
+        s1.__proto__==Student.prototype
+        Student.prototype = person
+        person.__proto__ == Person.prototype
+        s1.proto__.__proto__==
+    */
+    console.log(s1.age,s2.age);
+</script>
+
+
+<script>
+//demo09--1
+function Person(name,age){
+    this.name = name;
+    this.age = age;
+};
+Person.prototype.showName = function(){console.log(this.name);};
+function Student(name,age,id){
+    Person.call(this,name,age);
+    this.id = id;
+}
+Student.prototype.__proto__ = Person.prototype;
+var s1 = new Student("xxx",22,2017001);
+var s2 = new Student("www",23,2017002);
+
+</script>
+
+
+<script>
+    function Student(name,age,id){
+        Person.call(this,name,age);
+        this.id = id;
+    }
+    Student.prototype.__proto__ = Person.prototype;
+    var s1 = new Student("zhangsan",20,1029485);
+    s1.showName();
+    console.log(s1);
+
+</script>
+
+
+<script>
+//demo 9--2
+function Person(name,age){
+    this.name = name;
+    this.age = age;
+};
+Person.prototype.showName = function(){
+    console.log(this.name);
+};
+function Student(name,age,id){
+    Person.call(this,name,age);
+    this.id = id;
+}
+Student.prototype = Object.create(Person.prototype);
+// console.log(Person.prototype.constructor); //
+// console.log(Student.prototype.constructor); //
+Student.prototype.constructor = Student;
+var s1 = new Student("xxx",22,2017001);
+var s2 = new Student("www",23,2017002);
+</script>
+
+
+
+
+
+
+
+<script>
+        (function(w,d){
+            function inputIdentify(inputId){
+                this._init(inputId);
+                this._effect();
+            }
+            inputIdentify.prototype._init = function(inputId){
+                var inputObject = d.getElementById(inputId);
+                this.inputObject = inoputObject;
+            }
+            inputIdentify.prototype._effect = function(){
+                this.inputObject.onblur = function(){
+                    alert("失去焦点");
+                }
+                this.inputObject.onfuous = function(){
+                    alert("获得焦点");
+                }
+            }
+            w.inputIdentify = inputIdentify;
+        })(window,document)
+        var input1 = new inputIdentify("username")
+    </script>
+    
+    <script>
+        /*
+            1、判断方法是静态方法还是原型方法
+            2、确定这个方法是用来做什么的
+                （1）是否会对原变量产生影响
+                （2）最终的作用效果是什么样的
+            3、判断方法的参数分别是什么
+                （1）如果参数是回调函数的形式，判断回调函数的参数是什么
+                （2）如果是值类型参数，判断参数所代表的意义
+        */
+        var arr1 = [4,3,2,1];
+        function compareNumbers(a,b){
+            return a - b;
+        }
+        arr1.sort(compareNumbers);
+        console.log(arr1);
+    
+        
+    </script>
+</html>

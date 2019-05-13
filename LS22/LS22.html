@@ -1,0 +1,71 @@
+<html>
+
+<title>ch22</title>
+
+<body>
+<ul id="list">
+
+
+</ul>
+
+</body>
+<script>
+/*
+function getRandomAarbitraty(min,max){
+    return Math.random()*(max-min)+min;
+}
+*/
+
+/*
+    json字符串和JS对象可以进行相互的转换
+    并且js对象可以很容易的渲染到页面中
+    所以可以将从后台获取到的json数据转化为JS对象
+
+*/
+    var jsObject = {"username":"zhangsan","age":20};
+    for(var i in jsObject){
+        var liNode = document.createElement("li");
+        liNode.innerHTML = i + " " +jsObject[i];
+        ulObject.appendChild(liNode);
+    }
+
+
+</script>
+
+
+<script>
+    /*
+        JSON.stringify(js对象)
+        可以将JS对象数据，结构转化为json字符串
+    */
+    var jsObject = {
+        "username":"zhangsan",
+        "age":20,
+        "address":{"add":"石家庄","addcode":"11322"}
+    }
+        //1
+    var jsonStr = JSON.stringify(jsObject);
+    console.log(jsonStr);
+    console.log(typeof jsonStr);
+
+
+        //2
+    var jsonStr = JSON.stringify(jsObject, function(k,v){
+        if(typeof v == "number"){
+            return undefined;
+        }
+        return v;
+    })
+    console.log(jsonStr);
+    console.log(typeof jsonStr);
+
+
+    var jsObject2 = JSON.parse(jsonStr);
+    console.log(jsObject2);
+    console.log(typeof jsObject2);
+
+
+
+    
+</script>
+</html>
